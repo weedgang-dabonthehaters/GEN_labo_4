@@ -1,5 +1,7 @@
 package ch.heigvd.gen2019;
 
+import ch.heigvd.gen2019.size.Size;
+
 public class Product {
     public static final Size SIZE_NOT_APPLICABLE = null;
     private String code;
