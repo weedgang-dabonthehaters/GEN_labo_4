@@ -18,28 +18,8 @@ public class OrdersWriter {
             sb.append(", ");
             sb.append("\"products\": [");
             for (int j = 0; j < order.getProductsCount(); j++) {
-                Product product = order.getProduct(j);
-
-                sb.append("{");
-                sb.append("\"code\": \"");
-                sb.append(product.getCode());
-                sb.append("\", ");
-                sb.append("\"color\": \"");
-                sb.append(product.getColor());
-                sb.append("\", ");
-
-                if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
-                    sb.append("\"size\": \"");
-                    sb.append(getSizeFor(product));
-                    sb.append("\", ");
-                }
-
-                sb.append("\"price\": ");
-                sb.append(product.getPrice());
-                sb.append(", ");
-                sb.append("\"currency\": \"");
-                sb.append(product.getCurrency());
-                sb.append("\"}, ");
+                Product product = order.getProductAt(j);
+                getProduct(sb, product);
             }
 
             if (order.getProductsCount() > 0) {
@@ -55,6 +35,29 @@ public class OrdersWriter {
         }
 
         return sb.append("]}").toString();
+    }
+
+    private void getProduct(StringBuffer sb, Product product) {
+        sb.append("{");
+        sb.append("\"code\": \"");
+        sb.append(product.getCode());
+        sb.append("\", ");
+        sb.append("\"color\": \"");
+        sb.append(getColor(product));
+        sb.append("\", ");
+
+        if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
+            sb.append("\"size\": \"");
+            sb.append(getSizeFor(product));
+            sb.append("\", ");
+        }
+
+        sb.append("\"price\": ");
+        sb.append(product.getPrice());
+        sb.append(", ");
+        sb.append("\"currency\": \"");
+        sb.append(product.getCurrency());
+        sb.append("\"}, ");
     }
 
     private String getSizeFor(Product product) {
