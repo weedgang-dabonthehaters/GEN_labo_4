@@ -20,7 +20,9 @@ public class OrdersWriter {
             for (int j = 0; j < order.getProductsCount(); j++) {
                 Product product = order.getProductAt(j);
 
+
                 getProduct(sb, product);
+
             }
 
             if (order.getProductsCount() > 0) {
@@ -37,6 +39,7 @@ public class OrdersWriter {
 
         return sb.append("]}").toString();
     }
+
 
     private void getProduct(StringBuffer sb, Product product) {
         sb.append("{");
@@ -61,24 +64,6 @@ public class OrdersWriter {
         sb.append("\"}, ");
     }
 
-    private String getSizeFor(Product product) {
-        switch (product.getSize()) {
-            case 1:
-                return "XS";
-            case 2:
-                return "S";
-            case 3:
-                return "M";
-            case 4:
-                return "L";
-            case 5:
-                return "XL";
-            case 6:
-                return "XXL";
-            default:
-                return "Invalid Size";
-        }
-    }
 
     private String getColorFor(Product product) {
         switch (product.getColor()) {
