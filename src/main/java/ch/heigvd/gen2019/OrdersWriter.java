@@ -11,7 +11,7 @@ public class OrdersWriter {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
         for (int i = 0; i < orders.getOrdersCount(); i++) {
-            Order order = orders.getOrder(i);
+            Order order = orders.getOrderAt(i);
             sb.append("{");
             sb.append("\"id\": ");
             sb.append(order.getOrderId());
