@@ -26,4 +26,24 @@ public class Order {
     public void AddProduct(Product product) {
         products.add(product);
     }
+
+    public void getOrder(StringBuffer sb) {
+        sb.append("{");
+        sb.append("\"id\": ");
+        sb.append(getOrderId());
+        sb.append(", ");
+        sb.append("\"products\": [");
+        for (int j = 0; j < getProductsCount(); j++) {
+            Product product = getProductAt(j);
+
+            product.getProduct(sb);
+        }
+
+        if (getProductsCount() > 0) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+
+        sb.append("]");
+        sb.append("}, ");
+    }
 }
