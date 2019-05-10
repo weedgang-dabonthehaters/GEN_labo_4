@@ -21,13 +21,15 @@ public class Orders {
     public String getOrders() {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
-        for (int i = 0; i < getOrdersCount(); i++) {
-            Order order = getOrderAt(i);
-            order.getOrder(sb);
-        }
+        if(orders.size() > 0) {
+            for (int i = 0; i < getOrdersCount(); i++) {
+                Order order = getOrderAt(i);
+                order.getOrder(sb);
+            }
 
-        if (getOrdersCount() > 0) {
-            sb.delete(sb.length() - 2, sb.length());
+            if (getOrdersCount() > 0) {
+                sb.delete(sb.length() - 2, sb.length());
+            }
         }
 
         return sb.append("]}").toString();
