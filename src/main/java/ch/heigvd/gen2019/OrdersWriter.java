@@ -12,24 +12,7 @@ public class OrdersWriter {
 
         for (int i = 0; i < orders.getOrdersCount(); i++) {
             Order order = orders.getOrderAt(i);
-            sb.append("{");
-            sb.append("\"id\": ");
-            sb.append(order.getOrderId());
-            sb.append(", ");
-            sb.append("\"products\": [");
-            for (int j = 0; j < order.getProductsCount(); j++) {
-                Product product = order.getProductAt(j);
-
-                getProduct(sb, product);
-
-            }
-
-            if (order.getProductsCount() > 0) {
-                sb.delete(sb.length() - 2, sb.length());
-            }
-
-            sb.append("]");
-            sb.append("}, ");
+            getOrder(sb, order);
         }
 
         if (orders.getOrdersCount() > 0) {
@@ -39,28 +22,24 @@ public class OrdersWriter {
         return sb.append("]}").toString();
     }
 
-
-    private void getProduct(StringBuffer sb, Product product) {
+    private void getOrder(StringBuffer sb, Order order) {
         sb.append("{");
-        sb.append("\"code\": \"");
-        sb.append(product.getCode());
-        sb.append("\", ");
-        sb.append("\"color\": \"");
-        sb.append(product.getColor());
-        sb.append("\", ");
+        sb.append("\"id\": ");
+        sb.append(order.getOrderId());
+        sb.append(", ");
+        sb.append("\"products\": [");
+        for (int j = 0; j < order.getProductsCount(); j++) {
+            Product product = order.getProductAt(j);
 
-        if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
-            sb.append("\"size\": \"");
-            sb.append(product.getSize());
-            sb.append("\", ");
+            product.getProduct(sb);
         }
 
-        sb.append("\"price\": ");
-        sb.append(product.getPrice());
-        sb.append(", ");
-        sb.append("\"currency\": \"");
-        sb.append(product.getCurrency());
-        sb.append("\"}, ");
+        if (order.getProductsCount() > 0) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+
+        sb.append("]");
+        sb.append("}, ");
     }
 
 

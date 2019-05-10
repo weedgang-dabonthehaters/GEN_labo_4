@@ -8,14 +8,16 @@ public class Product {
 
     private Color color;
     private Size size;
-    private Amount amount;
+    private double price;
+    private String currency;
 
-    public Product(String code, Color color, Size size, Amount amount) {
+    public Product(String code, Color color, Size size, double price, String currency) {
 
         this.code = code;
         this.color = color;
         this.size = size;
-        this.amount = amount;
+        this.price = price;
+        this.currency = currency;
     }
 
     public String getCode() {
@@ -31,10 +33,33 @@ public class Product {
     }
 
     public double getPrice() {
-        return amount.getPrice();
+        return price;
     }
 
     public String getCurrency() {
-        return amount.getCurrency();
+        return currency;
+    }
+
+    public void getProduct(StringBuffer sb) {
+        sb.append("{");
+        sb.append("\"code\": \"");
+        sb.append(getCode());
+        sb.append("\", ");
+        sb.append("\"color\": \"");
+        sb.append(getColor());
+        sb.append("\", ");
+
+        if (getSize() != SIZE_NOT_APPLICABLE) {
+            sb.append("\"size\": \"");
+            sb.append(getSize());
+            sb.append("\", ");
+        }
+
+        sb.append("\"price\": ");
+        sb.append(getPrice());
+        sb.append(", ");
+        sb.append("\"currency\": \"");
+        sb.append(getCurrency());
+        sb.append("\"}, ");
     }
 }
