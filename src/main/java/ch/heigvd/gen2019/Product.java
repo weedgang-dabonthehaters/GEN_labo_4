@@ -8,16 +8,14 @@ public class Product {
 
     private Color color;
     private Size size;
-    private double price;
-    private String currency;
+    private Amount amount;
 
-    public Product(String code, Color color, Size size, double price, String currency) {
+    public Product(String code, Color color, Size size, Amount amount) {
 
         this.code = code;
         this.color = color;
         this.size = size;
-        this.price = price;
-        this.currency = currency;
+        this.amount = amount;
     }
 
     public String getCode() {
@@ -33,10 +31,10 @@ public class Product {
     }
 
     public double getPrice() {
-        return price;
+        return amount.getPrice();
     }
 
     public String getCurrency() {
-        return currency;
+        return amount.getCurrency();
     }
 }
