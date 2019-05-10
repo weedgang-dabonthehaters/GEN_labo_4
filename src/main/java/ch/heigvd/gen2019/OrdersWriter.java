@@ -12,23 +12,7 @@ public class OrdersWriter {
 
         for (int i = 0; i < orders.getOrdersCount(); i++) {
             Order order = orders.getOrderAt(i);
-            sb.append("{");
-            sb.append("\"id\": ");
-            sb.append(order.getOrderId());
-            sb.append(", ");
-            sb.append("\"products\": [");
-            for (int j = 0; j < order.getProductsCount(); j++) {
-                Product product = order.getProductAt(j);
-
-                product.getProduct(sb);
-            }
-
-            if (order.getProductsCount() > 0) {
-                sb.delete(sb.length() - 2, sb.length());
-            }
-
-            sb.append("]");
-            sb.append("}, ");
+            getOrder(sb, order);
         }
 
         if (orders.getOrdersCount() > 0) {
@@ -36,6 +20,26 @@ public class OrdersWriter {
         }
 
         return sb.append("]}").toString();
+    }
+
+    private void getOrder(StringBuffer sb, Order order) {
+        sb.append("{");
+        sb.append("\"id\": ");
+        sb.append(order.getOrderId());
+        sb.append(", ");
+        sb.append("\"products\": [");
+        for (int j = 0; j < order.getProductsCount(); j++) {
+            Product product = order.getProductAt(j);
+
+            product.getProduct(sb);
+        }
+
+        if (order.getProductsCount() > 0) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+
+        sb.append("]");
+        sb.append("}, ");
     }
 
 
