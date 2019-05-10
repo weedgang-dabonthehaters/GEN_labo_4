@@ -14,7 +14,7 @@ public class Orders {
         return orders.size();
     }
 
-    public Order getOrder(int i) {
-        return orders.get(i);
+    public Order getOrderAt(int index) {
+        return orders.get(index);
     }
 }

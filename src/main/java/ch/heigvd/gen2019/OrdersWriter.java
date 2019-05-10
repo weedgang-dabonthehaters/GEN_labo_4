@@ -11,7 +11,7 @@ public class OrdersWriter {
         StringBuffer sb = new StringBuffer("{\"orders\": [");
 
         for (int i = 0; i < orders.getOrdersCount(); i++) {
-            Order order = orders.getOrder(i);
+            Order order = orders.getOrderAt(i);
             sb.append("{");
             sb.append("\"id\": ");
             sb.append(order.getOrderId());
@@ -51,7 +51,7 @@ public class OrdersWriter {
 
         if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
             sb.append("\"size\": \"");
-            sb.append(product.getSizeFor());
+            sb.append(product.getSize());
             sb.append("\", ");
         }
 

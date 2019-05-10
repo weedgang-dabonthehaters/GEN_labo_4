@@ -1,6 +1,9 @@
 package ch.heigvd.gen2019;
 
 import org.junit.jupiter.api.Test;
+
+import ch.heigvd.gen2019.size.M;
+
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
