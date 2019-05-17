@@ -3,7 +3,6 @@ package ch.heigvd.gen2019;
 import ch.heigvd.gen2019.size.Size;
 
 public class Product {
-    public static final Size SIZE_NOT_APPLICABLE = null;
     private String code;
 
     private Color color;
@@ -49,7 +48,7 @@ public class Product {
         sb.append(getColor());
         sb.append("\", ");
 
-        if (getSize() != SIZE_NOT_APPLICABLE) {
+        if (getSize() != null) {
             sb.append("\"size\": \"");
             sb.append(getSize());
             sb.append("\", ");
